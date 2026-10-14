@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./metrics.css" />
   </head>
   <body>
     <div class="noise" aria-hidden="true"></div>
@@ -52,6 +53,26 @@
           <div class="coordinate c1">31.2°N / 121.5°E</div>
           <div class="coordinate c2">VALUE FLOW · LIVE</div>
         </div>
+      </section>
+
+      <section class="numbers-section view active" data-view="map" id="numbers">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> WORLD ECONOMY / 2024</p>
+            <h2>先用数字，校准世界的尺度</h2>
+          </div>
+          <p>所有数字都附带年份与来源。它们不是投资预测，而是帮助你判断“这个产业到底有多大、变化有多快”的坐标系。</p>
+        </div>
+        <div class="world-dashboard">
+          <div class="gdp-orb">
+            <small>全球 GDP · 2024</small>
+            <strong>$111.7<span>万亿</span></strong>
+            <em>WORLD BANK · CURRENT USD</em>
+          </div>
+          <div class="sector-bars" id="sectorBars"></div>
+        </div>
+        <div class="signal-grid" id="signalGrid"></div>
+        <p class="data-note">数据口径可能因机构修订而变化；本站保留年份、单位和原始来源，避免把不同口径直接比较。</p>
       </section>
 
       <section class="atlas-section view active" data-view="map" id="atlas">

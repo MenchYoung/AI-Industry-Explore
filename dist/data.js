@@ -53,6 +53,76 @@ const ATLAS_DATA = {
     ["construction","aluminum","建筑用材"],["education","information","数字化交付"],["healthcare","information","医疗数字化"],
     ["new-energy","battery","扩大储能需求"],["finance","construction","提供长期资本"],["semiconductor","manufacturing","提升自动化"]
   ],
+  quantitative: {
+    macro: {
+      year: 2024,
+      gdp: { value: "$111.7万亿", raw: 111.6694, unit: "万亿美元" },
+      shares: [
+        { label: "第一产业增加值", value: 4.1, color: "#a8e06c" },
+        { label: "第二产业增加值", value: 25.4, color: "#ff8c61" },
+        { label: "其中：制造业", value: 14.9, color: "#ffc06b" },
+        { label: "第三产业增加值", value: 63.3, color: "#72c7ff" }
+      ],
+      note: "增加值占 GDP 比重；产业增加值之和与 GDP 的差额主要来自产品税减补贴等项目。",
+      source: "world-bank"
+    },
+    signals: [
+      { node:"new-energy", value:"4.443", unit:"TW", label:"全球可再生能源装机", year:"2024", delta:"+15.1%", source:"irena" },
+      { node:"semiconductor", value:"630.5", unit:"十亿美元", label:"全球半导体销售额", year:"2024", delta:"历史新高", source:"sia" },
+      { node:"logistics", value:"24.43", unit:"万亿美元", label:"全球货物贸易额", year:"2024", delta:"+2.0%", source:"wto" },
+      { node:"healthcare", value:"9.8", unit:"万亿美元", label:"全球卫生支出", year:"2022", delta:"占 GDP 9.9%", source:"who" },
+      { node:"battery", value:"17+", unit:"百万辆", label:"全球电动车销量", year:"2024", delta:"+25%", source:"iea-ev" },
+      { node:"aluminum", value:"72", unit:"百万吨", label:"全球原铝产量", year:"2024", delta:"中国约 43Mt", source:"nrcan" }
+    ],
+    nodes: {
+      agriculture: [
+        { value:"4.1%", label:"全球 GDP 占比", year:"2024", source:"world-bank" },
+        { value:"约 $4.6T", label:"全球增加值（按占比推算）", year:"2024", source:"world-bank" }
+      ],
+      manufacturing: [
+        { value:"14.9%", label:"全球 GDP 占比", year:"2024", source:"world-bank" },
+        { value:"约 $16.6T", label:"全球增加值（按占比推算）", year:"2024", source:"world-bank" }
+      ],
+      utilities: [
+        { value:"+4.3%", label:"全球电力需求增速", year:"2024", source:"iea-power" },
+        { value:"+1,080 TWh", label:"全球用电量年度增量", year:"2024", source:"iea-power" }
+      ],
+      aluminum: [
+        { value:"72 Mt", label:"全球原铝产量", year:"2024", source:"nrcan" },
+        { value:"43 Mt", label:"中国原铝产量", year:"2024", source:"nrcan" }
+      ],
+      semiconductor: [
+        { value:"$630.5B", label:"全球销售额（修订值）", year:"2024", source:"sia" },
+        { value:"$212.6B", label:"逻辑芯片销售额", year:"2024", source:"sia" }
+      ],
+      battery: [
+        { value:"17M+", label:"全球电动车销量", year:"2024", source:"iea-ev" },
+        { value:"20%+", label:"全球新车销量占比", year:"2024", source:"iea-ev" }
+      ],
+      "new-energy": [
+        { value:"4.443 TW", label:"全球可再生能源装机", year:"2024", source:"irena" },
+        { value:"46.2%", label:"全球总装机容量占比", year:"2024", source:"irena" }
+      ],
+      logistics: [
+        { value:"$24.43T", label:"全球货物贸易额", year:"2024", source:"wto" },
+        { value:"+2.0%", label:"货物贸易额同比增长", year:"2024", source:"wto" }
+      ],
+      healthcare: [
+        { value:"$9.8T", label:"全球卫生支出", year:"2022", source:"who" },
+        { value:"9.9%", label:"全球 GDP 占比", year:"2022", source:"who" }
+      ]
+    }
+  },
+  sources: {
+    "world-bank": { name:"世界银行 WDI", url:"https://wdi.worldbank.org/table/4.2", note:"2024 年全球 GDP 与增加值结构" },
+    irena: { name:"IRENA", url:"https://www.irena.org/-/media/Files/IRENA/Agency/Publication/2025/Jul/IRENA_DAT_Renewable_energy_highlights_2025.pdf", note:"Renewable energy highlights 2025（修订数据）" },
+    sia: { name:"SIA / WSTS", url:"https://www.semiconductors.org/global-semiconductor-sales-increase-19-1-in-2024-double-digit-growth-projected-in-2025/", note:"2024 全球半导体销售" },
+    wto: { name:"WTO", url:"https://www.wto.org/english/res_e/booksp_e/anrep_e/ar25_chap1_e.pdf", note:"WTO Annual Report 2025" },
+    who: { name:"WHO", url:"https://iris.who.int/bitstream/handle/10665/379750/9789240104495-eng.pdf", note:"Global spending on health" },
+    "iea-ev": { name:"IEA", url:"https://www.iea.org/reports/global-ev-outlook-2025/trends-in-electric-car-markets-2", note:"Global EV Outlook 2025" },
+    "iea-power": { name:"IEA", url:"https://www.iea.org/reports/global-energy-review-2025/electricity", note:"Global Energy Review 2025" },
+    nrcan: { name:"Natural Resources Canada", url:"https://natural-resources.canada.ca/minerals-mining/mining-data-statistics-analysis/minerals-metals-facts/aluminum-facts", note:"Aluminum facts 2024" }
+  },
   trends: [
     { id:"ai", name:"AI 快速发展", aliases:["ai","人工智能","算力"], summary:"AI首先拉动算力基础设施，然后通过软件与自动化向各产业扩散。", paths:[
       ["AI 模型规模增长","算力需求上升","半导体与服务器扩产","数据中心用电增加","电力与新能源投资"],

@@ -25,6 +25,28 @@
     $("#linkCount").textContent = data.links.length;
   }
 
+  function sourceLink(id, compact = false) {
+    const source = data.sources[id];
+    if (!source) return "";
+    return `<a class="source-link" href="${source.url}" target="_blank" rel="noopener noreferrer" title="${source.note}">${compact ? source.name : `来源：${source.name}`} ↗</a>`;
+  }
+
+  function renderNumbers() {
+    const q = data.quantitative;
+    $("#sectorBars").innerHTML = q.macro.shares.map(item => `<div class="sector-bar-row">
+      <div><span>${item.label}</span><b>${item.value}%</b></div>
+      <div class="bar-track"><i style="width:${item.value}%;--bar:${item.color}"></i></div>
+    </div>`).join("") + `<p>${q.macro.note} ${sourceLink(q.macro.source, true)}</p>`;
+    $("#signalGrid").innerHTML = q.signals.map((item, index) => `<article class="signal-card">
+      <button class="signal-main" data-node="${item.node}" aria-label="查看${item.label}对应产业">
+        <span class="signal-index">0${index + 1}</span><small>${item.label}</small>
+        <strong>${item.value}<em>${item.unit}</em></strong>
+        <span class="signal-meta"><span>${item.year}</span><b>${item.delta}</b></span>
+      </button>
+      ${sourceLink(item.source, true)}
+    </article>`).join("");
+  }
+
   function relatedLinks(id) {
     return data.links.filter(([a,b]) => a === id || b === id).slice(0, 6);
   }
@@ -34,12 +56,14 @@
     if (!node) return;
     const path = node.path || [sectorName(node.sector), node.name];
     const related = relatedLinks(id);
+    const metrics = data.quantitative.nodes[id] || [];
     $("#drawerContent").innerHTML = `
       <p class="detail-breadcrumb">${path.map(escapeHtml).join(" &nbsp;→&nbsp; ")}</p>
       <header class="detail-head">
         <div><p class="eyebrow"><span></span> ${node.en}</p><h2>${node.name}</h2><p>${node.oneLiner}</p></div>
         <div class="detail-icon">${node.icon}</div>
       </header>
+      ${metrics.length ? `<section class="node-metrics">${metrics.map(metric => `<div><small>${metric.year} · ${metric.label}</small><strong>${metric.value}</strong>${sourceLink(metric.source, true)}</div>`).join("")}</section>` : ""}
       <div class="answer-grid">
         <div class="answer"><small>01 / 解决什么问题</small><h3>${node.oneLiner}</h3><p>${node.why}</p></div>
         <div class="answer"><small>02 / 规模与重要性</small><h3>它在经济中的位置</h3><p>${node.scale}</p></div>
@@ -120,7 +144,7 @@
   function openSearch() { renderSearch(); $("#searchDialog").showModal(); setTimeout(() => $("#globalSearch").focus(), 30); }
   function closeSearch() { $("#searchDialog").close(); }
 
-  renderMap(); renderTrendChips(); renderDaily();
+  renderMap(); renderNumbers(); renderTrendChips(); renderDaily();
   document.addEventListener("click", e => {
     const node = e.target.closest("[data-node]"); if (node) { if ($("#searchDialog").open) closeSearch(); openNode(node.dataset.node); return; }
     const mode = e.target.closest("[data-mode]"); if (mode) setMode(mode.dataset.mode);
