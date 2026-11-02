@@ -1,140 +1,32 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="世界产业地图：从产业树、价值链与趋势冲击中理解经济如何运行。" />
-    <meta name="theme-color" content="#07110f" />
-    <title>世界如何运转｜产业认知地图</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./metrics.css" />
-  </head>
-  <body>
-    <div class="noise" aria-hidden="true"></div>
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="返回产业地图首页">
-        <span class="brand-mark"><i></i><i></i><i></i></span>
-        <span>世界如何运转</span>
-        <em>INDUSTRY ATLAS</em>
-      </a>
-      <nav class="mode-nav" aria-label="探索模式">
-        <button class="mode-btn active" data-mode="map">产业地图</button>
-        <button class="mode-btn" data-mode="trend">趋势推演</button>
-        <button class="mode-btn" data-mode="daily">今日一业</button>
-      </nav>
-      <button class="search-trigger" id="searchTrigger" aria-label="搜索产业">
-        <span>搜索节点</span><kbd>⌘ K</kbd>
-      </button>
-    </header>
-
-    <main id="top">
-      <section class="hero view active" id="mapView" data-view="map">
-        <div class="hero-copy">
-          <p class="eyebrow"><span></span> ECONOMIC SYSTEM / 产业认知系统 v0.1</p>
-          <h1>别只看公司。<br />看见<span>公司背后的世界。</span></h1>
-          <p class="hero-lead">沿着资源、生产、服务与需求的连接，建立一张理解经济运行的个人地图。</p>
-          <div class="hero-actions">
-            <button class="primary-action" id="startExplore">开始探索 <span>↘</span></button>
-            <p><b id="nodeCount">24</b> 个核心节点<br /><b id="linkCount">18</b> 条产业关系</p>
-          </div>
-        </div>
-        <div class="orbit-stage" aria-hidden="true">
-          <div class="orbit orbit-a"><span>资源</span><i></i></div>
-          <div class="orbit orbit-b"><span>生产</span><i></i></div>
-          <div class="orbit orbit-c"><span>服务</span><i></i></div>
-          <div class="globe-core">
-            <small>WORLD ECONOMY</small>
-            <strong>产业</strong>
-            <em>不断交换的<br />价值网络</em>
-          </div>
-          <div class="coordinate c1">31.2°N / 121.5°E</div>
-          <div class="coordinate c2">VALUE FLOW · LIVE</div>
-        </div>
-      </section>
-
-      <section class="numbers-section view active" data-view="map" id="numbers">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow"><span></span> WORLD ECONOMY / 2024</p>
-            <h2>先用数字，校准世界的尺度</h2>
-          </div>
-          <p>所有数字都附带年份与来源。它们不是投资预测，而是帮助你判断“这个产业到底有多大、变化有多快”的坐标系。</p>
-        </div>
-        <div class="world-dashboard">
-          <div class="gdp-orb">
-            <small>全球 GDP · 2024</small>
-            <strong>$111.7<span>万亿</span></strong>
-            <em>WORLD BANK · CURRENT USD</em>
-          </div>
-          <div class="sector-bars" id="sectorBars"></div>
-        </div>
-        <div class="signal-grid" id="signalGrid"></div>
-        <p class="data-note">数据口径可能因机构修订而变化；本站保留年份、单位和原始来源，避免把不同口径直接比较。</p>
-      </section>
-
-      <section class="atlas-section view active" data-view="map" id="atlas">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow"><span></span> THE BIG PICTURE</p>
-            <h2>一张图，看见三种价值如何流动</h2>
-          </div>
-          <p>从自然获取原料，经由工业转化价值，再由服务业组织、分配并放大效率。选择任意节点，进入它的经济现场。</p>
-        </div>
-        <div class="macro-grid" id="macroGrid"></div>
-        <div class="map-legend">
-          <span><i class="dot primary"></i> 第一产业 · 从自然获取</span>
-          <span><i class="dot secondary"></i> 第二产业 · 转化物质价值</span>
-          <span><i class="dot tertiary"></i> 第三产业 · 组织人与信息</span>
-          <small>节点大小代表认知入口层级，并非经济规模</small>
-        </div>
-      </section>
-
-      <section class="trend-section view" data-view="trend" id="trendView">
-        <div class="trend-intro">
-          <p class="eyebrow"><span></span> CAUSE → EFFECT</p>
-          <h1>如果世界发生一个变化，<br /><span>哪里会先有反应？</span></h1>
-          <p>输入一个趋势，从需求变化一路追踪到受影响的产业、关键资源和潜在受益者。</p>
-          <div class="trend-search">
-            <input id="trendInput" type="text" placeholder="例如：AI 快速发展" autocomplete="off" />
-            <button id="runTrend">开始推演 <span>→</span></button>
-          </div>
-          <div class="trend-chips" id="trendChips"></div>
-        </div>
-        <div class="trend-result" id="trendResult" aria-live="polite"></div>
-      </section>
-
-      <section class="daily-section view" data-view="daily" id="dailyView">
-        <div class="daily-card" id="dailyCard"></div>
-      </section>
-    </main>
-
-    <aside class="detail-drawer" id="detailDrawer" aria-hidden="true">
-      <div class="drawer-scrim" data-close-drawer></div>
-      <article class="drawer-panel">
-        <button class="drawer-close" data-close-drawer aria-label="关闭详情">×</button>
-        <div id="drawerContent"></div>
-      </article>
-    </aside>
-
-    <dialog class="search-dialog" id="searchDialog">
-      <div class="search-box">
-        <span>⌕</span>
-        <input id="globalSearch" type="search" placeholder="搜索产业、公司、材料或问题…" />
-        <button id="closeSearch">ESC</button>
-      </div>
-      <div class="search-results" id="searchResults"></div>
-    </dialog>
-
-    <footer>
-      <div><span class="brand-mark"><i></i><i></i><i></i></span> 世界如何运转</div>
-      <p>不是记住更多名词，而是看见更多连接。</p>
-      <small>首版为结构化认知示范 · 内容为方向性概览，不构成投资建议</small>
-    </footer>
-
-    <script src="./data.js"></script>
-    <script src="./app.js"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="YHH Global Company Financial Research — 可长期积累的个人企业财务研究系统。">
+  <meta name="theme-color" content="#07120f"><title>YHH Financial Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#dashboard" data-nav="dashboard"><span class="brand-mark">Y</span><span><b>YHH Research</b><small>GLOBAL COMPANY LAB</small></span></a>
+    <nav id="mainNav" aria-label="主导航">
+      <button data-nav="dashboard" class="active"><i>⌂</i><span>研究总览</span></button>
+      <button data-nav="companies"><i>◇</i><span>公司档案</span></button>
+      <button data-nav="financials"><i>≡</i><span>财务数据</span></button>
+      <button data-nav="analytics"><i>⌁</i><span>财务分析</span></button>
+      <button data-nav="comparison"><i>⇄</i><span>同行比较</span><em>CORE</em></button>
+      <button data-nav="journal"><i>✎</i><span>研究日志</span></button>
+      <button data-nav="settings"><i>⚙</i><span>数据管理</span></button>
+    </nav>
+    <div class="sidebar-foot"><span class="status-dot"></span><div><b>LOCAL DATABASE</b><small>数据保存在当前浏览器</small></div></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="打开导航">☰</button><div><p id="breadcrumb">YHH RESEARCH / DASHBOARD</p><h1 id="pageTitle">研究总览</h1></div><div class="top-actions"><button class="ghost" id="globalSearchBtn">⌕ 搜索</button><button class="primary" data-action="add-financial">＋ 录入财务数据</button></div></header>
+    <main id="app" tabindex="-1"></main>
+  </div>
+  <dialog id="modal"><div class="modal-card"><header><div><p class="eyebrow" id="modalEyebrow">NEW RECORD</p><h2 id="modalTitle">新增</h2></div><button type="button" data-close class="icon-btn" aria-label="关闭">×</button></header><div id="modalBody"></div></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div><input type="file" id="importFile" accept="application/json" hidden>
+  <script src="./app.js"></script>
+</body></html>
