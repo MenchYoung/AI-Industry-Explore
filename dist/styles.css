@@ -8,3 +8,26 @@
 .profile-anchor-nav{position:sticky;top:92px;z-index:16;display:grid;grid-template-columns:repeat(6,1fr);padding:0;background:rgba(7,17,15,.96);backdrop-filter:blur(14px);border:1px solid var(--line);margin-bottom:12px}.profile-anchor-nav a{color:var(--text);text-decoration:none;padding:13px 10px;border-right:1px solid var(--line);font-size:10px;text-align:center}.profile-anchor-nav a:last-child{border:0}.profile-anchor-nav a:hover{background:var(--lime);color:#102016}.profile-anchor-nav small{font:7px var(--mono);color:var(--muted)}.profile-long-section{scroll-margin-top:170px;border:1px solid var(--line);background:rgba(13,27,23,.62);padding:22px;margin-bottom:12px}.profile-section-title{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:16px}.profile-section-title h2{margin:0;font-size:20px}.profile-section-title h2 span{font:11px var(--mono);color:var(--muted);margin-left:8px}.profile-section-title a{color:var(--lime);font-size:9px;text-decoration:none}.research-lenses{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.research-lenses article{border:1px solid var(--line);padding:15px;min-height:150px}.research-lenses span{font:9px var(--mono);color:var(--lime)}.research-lenses h3{font-size:11px;margin:12px 0}.research-lenses p{font-size:9px;line-height:1.7;color:var(--muted)}
 @media(max-width:1100px){.batch-groups{grid-template-columns:1fr}.research-lenses{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.smart-import{grid-template-columns:1fr}.smart-actions{grid-column:1;flex-wrap:wrap}.batch-header,.metric-row{grid-template-columns:1fr 90px 75px}.profile-anchor-nav{top:78px;grid-template-columns:repeat(3,1fr)}.profile-long-section{scroll-margin-top:230px;padding:15px}.research-lenses{grid-template-columns:1fr}.batch-submit{bottom:8px}}
+
+/* 澄明企业研究院：白色＋蓝紫色主题 */
+:root{--bg:#f7f8ff;--panel:#fff;--panel2:#f2f3ff;--line:#e1e5f3;--line2:#c8cfee;--text:#18213d;--muted:#68728f;--lime:#6658e8;--green:#3c72e8;--red:#d95068;--amber:#a96d16;--blue:#4e7df0}
+html{background:var(--bg);color:var(--text)}
+body{background:radial-gradient(circle at 88% 0,rgba(122,108,232,.13),transparent 34%),linear-gradient(145deg,#fff 0,#f7f8ff 48%,#eef2ff 100%)}
+.sidebar{background:rgba(255,255,255,.98);box-shadow:8px 0 28px rgba(48,58,120,.07)}
+.brand-mark{border-color:#b9c1ef;color:var(--lime);background:#f2f1ff}
+nav button:hover{color:var(--text);background:#f1f3ff}
+nav button.active{color:#fff;background:linear-gradient(135deg,#536ee8,#7758d8);box-shadow:0 8px 20px rgba(95,83,218,.22)}
+.topbar{background:rgba(255,255,255,.9);box-shadow:0 4px 20px rgba(50,62,130,.06)}
+.primary{background:linear-gradient(135deg,#536ee8,#7758d8);color:#fff;border-color:#6658e8;box-shadow:0 7px 16px rgba(95,83,218,.18)}
+.ghost:hover,.chip:hover{border-color:#8f98dc;background:#f4f5ff}
+.metric-card,.panel,.company-card,.profile-head,.control-panel,.chart-card,.journal-card{background:rgba(255,255,255,.94);box-shadow:0 10px 30px rgba(52,62,120,.06)}
+.metric-card:after{border-color:rgba(102,88,232,.13);background:rgba(102,88,232,.025)}
+.quick,.field input,.field select,.field textarea,.search-input,.industry-pill,.company-check{background:#fbfbff;color:var(--text)}
+.quick:hover,.company-card:hover{border-color:#8f98dc;box-shadow:0 12px 30px rgba(85,75,190,.1)}
+.data-table tr:hover td{background:#f8f8ff}.data-table td{border-bottom-color:#e9ebf6}
+.info-item{background:#fff}.industry-pill.active,.company-check.active{border-color:#7368dc;color:#4d43bb;background:#f0efff}
+.segmented button.active{background:linear-gradient(135deg,#536ee8,#7758d8);color:#fff}
+.grid-line{stroke:#e1e4f2}.axis-label{fill:#77809a}
+.warning{border-color:rgba(183,121,31,.25);background:#fff9ed;color:#8c5b12}
+.journal-card p{color:#56617d}dialog{background:#fff;box-shadow:0 24px 70px rgba(26,32,80,.2)}dialog::backdrop{background:rgba(35,40,80,.28);backdrop-filter:blur(6px)}.modal-card>header{background:rgba(255,255,255,.96)}
+#toast{background:linear-gradient(135deg,#536ee8,#7758d8);color:#fff;box-shadow:0 10px 28px rgba(95,83,218,.28)}.bar-mini{background:#e7e9f6}.bar-mini i{background:linear-gradient(90deg,#4e7df0,#7758d8)}
