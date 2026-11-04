@@ -38,6 +38,11 @@
       items: [
         { name: '数据中心', en: 'Data Center', value: 193737 },
         { name: '其他业务', en: 'Gaming, ProViz, Automotive & OEM', value: 22201 }
+      ],
+      history: [
+        { period: 'FY2024', items: [{ name: '数据中心', value: 47525 }, { name: '其他业务', value: 13397 }] },
+        { period: 'FY2025', items: [{ name: '数据中心', value: 115186 }, { name: '其他业务', value: 15311 }] },
+        { period: 'FY2026', items: [{ name: '数据中心', value: 193737 }, { name: '其他业务', value: 22201 }] }
       ]
     },
     createdAt: stamp,
@@ -114,6 +119,7 @@
     'Operating Cash Flow': [24077, 'USD million'], 'Investing Cash Flow': [-8695, 'USD million'],
     'Financing Cash Flow': [-6176, 'USD million'], 'Capital Expenditure': [2677, 'USD million'],
     'Free Cash Flow': [21341, 'USD million'], 'Cash and Cash Equivalents': [22443, 'USD million'],
+    'Debt Securities': [34143, 'USD million'], 'Equity Securities': [42783, 'USD million'],
     'Total Assets': [320272, 'USD million'], 'Total Liabilities': [91288, 'USD million'],
     "Stockholders' Equity": [228984, 'USD million'], 'Total Debt': [33366, 'USD million'],
     'Accounts Receivable': [63059, 'USD million'], 'Inventory': [31575, 'USD million'],
