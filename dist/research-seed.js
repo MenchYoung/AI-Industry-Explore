@@ -33,6 +33,13 @@
     lensInvestor: '长期盈利能力和现金创造能力很强，但约 4.93 万亿美元市值已包含多年高增长预期。当前 GAAP 利润受到股票投资收益抬高，估值判断应使用正常化经营利润和现金流，不应只看一个 P/E。',
     lensCareer: '适合投入 3 至 5 年，尤其适合 CUDA、系统软件、高速网络、芯片系统、医疗 AI、机器人与数据中心基础设施方向。技术密度、跨学科协作和工作节奏都较高。',
     lensIndustry: '处于全球 AI 算力平台核心位置，其需求会向晶圆、HBM、先进封装、光网络、液冷、电力和数据中心建设传导。它既是产业增长受益者，也是资本开支周期的重要放大器。',
+    segments: {
+      period: 'FY2026', currency: 'USD', unit: 'USD million', sourceUrl: annualUrl,
+      items: [
+        { name: '数据中心', en: 'Data Center', value: 193737 },
+        { name: '其他业务', en: 'Gaming, ProViz, Automotive & OEM', value: 22201 }
+      ]
+    },
     createdAt: stamp,
     updatedAt: stamp,
   };
@@ -99,7 +106,9 @@
 
   const q2Values = {
     'Revenue': [96221, 'USD million'], 'Cost of Revenue': [24079, 'USD million'], 'Gross Profit': [72142, 'USD million'],
-    'Gross Margin': [75.0, '%'], 'Operating Income': [63734, 'USD million'], 'Operating Margin': [66.2, '%'],
+    'Gross Margin': [75.0, '%'], 'Sales & Administration': [1354, 'USD million'],
+    'Operating Income': [63734, 'USD million'], 'Operating Margin': [66.2, '%'],
+    'Other Income': [7773, 'USD million'], 'Income Tax': [11819, 'USD million'],
     'Net Income': [59688, 'USD million'], 'Net Profit Margin': [62.0, '%'], 'EPS': [2.47, 'USD/share'],
     'Diluted EPS': [2.46, 'USD/share'], 'R&D Expenses': [7054, 'USD million'],
     'Operating Cash Flow': [24077, 'USD million'], 'Investing Cash Flow': [-8695, 'USD million'],
